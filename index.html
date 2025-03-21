@@ -1,0 +1,550 @@
+<!-- meta tags and other links -->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ethical Den - Admin</title>
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" sizes="16x16">
+  <!-- remix icon font css  -->
+  <link rel="stylesheet" href="assets/css/remixicon.css">
+  <!-- BootStrap css -->
+  <link rel="stylesheet" href="assets/css/lib/bootstrap.min.css">
+  <!-- Apex Chart css -->
+  <link rel="stylesheet" href="assets/css/lib/apexcharts.css">
+  <!-- Data Table css -->
+  <link rel="stylesheet" href="assets/css/lib/dataTables.min.css">
+  <!-- Text Editor css -->
+  <link rel="stylesheet" href="assets/css/lib/editor-katex.min.css">
+  <link rel="stylesheet" href="assets/css/lib/editor.atom-one-dark.min.css">
+  <link rel="stylesheet" href="assets/css/lib/editor.quill.snow.css">
+  <!-- Date picker css -->
+  <link rel="stylesheet" href="assets/css/lib/flatpickr.min.css">
+  <!-- Calendar css -->
+  <link rel="stylesheet" href="assets/css/lib/full-calendar.css">
+  <!-- Vector Map css -->
+  <link rel="stylesheet" href="assets/css/lib/jquery-jvectormap-2.0.5.css">
+  <!-- Popup css -->
+  <link rel="stylesheet" href="assets/css/lib/magnific-popup.css">
+  <!-- Slick Slider css -->
+  <link rel="stylesheet" href="assets/css/lib/slick.css">
+  <!-- prism css -->
+  <link rel="stylesheet" href="assets/css/lib/prism.css">
+  <!-- file upload css -->
+  <link rel="stylesheet" href="assets/css/lib/file-upload.css">
+
+  <link rel="stylesheet" href="assets/css/lib/audioplayer.css">
+  <!-- main css -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <aside class="sidebar">
+    <button type="button" class="sidebar-close-btn">
+      <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
+    </button>
+    <div>
+      <a href="index.html" class="sidebar-logo">
+        <img src="assets/images/logo.png" alt="site logo" class="light-logo">
+        <img src="assets/images/logo.png" alt="site logo" class="dark-logo">
+        <img src="assets/images/logo.png" alt="site logo" class="logo-icon">
+      </a>
+    </div>
+    <div class="sidebar-menu-area">
+      <ul class="sidebar-menu" id="sidebar-menu">
+        <li>
+          <a href="index.html">
+            <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon"></iconify-icon>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="employee.html">
+            <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
+            <span>Employees</span>
+          </a>
+        </li>
+        <li>
+          <a href="customer.html">
+            <iconify-icon icon="fe:users" class="menu-icon"></iconify-icon>
+            <span>Customers</span>
+          </a>
+        </li>
+        <li class="sidebar-menu-group-title">Product Management</li>
+        <li>
+          <a href="category.html">
+            <iconify-icon icon="mdi:hospital-box" class="menu-icon"></iconify-icon>
+            <span>Medicine Category</span>
+          </a>
+        </li>
+        <li>
+          <a href="medicine.html">
+            <iconify-icon icon="mdi:pill" class="menu-icon"></iconify-icon>
+            <span>Medicines</span>
+          </a>
+        </li>
+        <li>
+          <a href="medicine-stock.html">
+            <iconify-icon icon="mdi:warehouse" class="menu-icon"></iconify-icon>
+            <span>Medicine Stock</span>
+          </a>
+        </li>
+        <li>
+          <a href="low-stocks.html">
+            <iconify-icon icon="mdi:warning" class="menu-icon"></iconify-icon>
+            <span>Low Stocks</span>
+          </a>
+        </li>
+        <li class="sidebar-menu-group-title">Order Management</li>
+        <li>
+          <a href="order.html">
+            <iconify-icon icon="mdi:cart" class="menu-icon"></iconify-icon>
+            <span>Order</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="dashboard-main">
+    <div class="navbar-header">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-auto">
+          <div class="d-flex flex-wrap align-items-center gap-4">
+            <button type="button" class="sidebar-toggle">
+              <iconify-icon icon="heroicons:bars-3-solid" class="icon text-2xl non-active"></iconify-icon>
+              <iconify-icon icon="iconoir:arrow-right" class="icon text-2xl active"></iconify-icon>
+            </button>
+            <button type="button" class="sidebar-mobile-toggle">
+              <iconify-icon icon="heroicons:bars-3-solid" class="icon"></iconify-icon>
+            </button>
+            <form class="navbar-search">
+              <input type="text" name="search" placeholder="Search">
+              <iconify-icon icon="ion:search-outline" class="icon"></iconify-icon>
+            </form>
+          </div>
+        </div>
+        <div class="col-auto">
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <button type="button" data-theme-toggle
+              class="w-40-px h-40-px bg-neutral-200 rounded-circle d-flex justify-content-center align-items-center"></button>
+            <div class="dropdown">
+              <button class="d-flex justify-content-center align-items-center rounded-circle" type="button"
+                data-bs-toggle="dropdown">
+                <img src="assets/images/user.png" alt="image" class="w-40-px h-40-px object-fit-cover rounded-circle">
+              </button>
+              <div class="dropdown-menu to-top dropdown-menu-sm">
+                <div
+                  class="py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2">
+                  <div id="user-deatils">
+                    <h6  id="user-name" class="text-lg text-primary-light fw-semibold mb-2">Shaidul Islam</h6>
+                    <span id="user-role" class="text-secondary-light fw-medium text-sm">Admin</span>
+                  </div>
+                  <button type="button" class="hover-text-danger">
+                    <iconify-icon icon="radix-icons:cross-1" class="icon text-xl"></iconify-icon>
+                  </button>
+                </div>
+                <ul class="to-top-list">
+                  <li>
+                    <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3"
+                      href="view-profile.html">
+                      <iconify-icon icon="solar:user-linear" class="icon text-xl"></iconify-icon> My Profile</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3"
+                      href="email.html">
+                      <iconify-icon icon="tabler:message-check" class="icon text-xl"></iconify-icon> Inbox</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3"
+                      href="company.html">
+                      <iconify-icon icon="icon-park-outline:setting-two" class="icon text-xl"></iconify-icon>
+                      Setting</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-danger d-flex align-items-center gap-3" 
+                       href="javascript:void(0)" onclick="logout()">
+                      <iconify-icon icon="lucide:power" class="icon text-xl"></iconify-icon> Log Out
+                    </a>
+                  </li>
+                  
+                </ul>
+              </div>
+            </div><!-- Profile dropdown end -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-main-body">
+
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+        <h6 class="fw-semibold mb-0">Dashboard</h6>
+        <ul class="d-flex align-items-center gap-2">
+          <li class="fw-medium">
+            <a href="index.html" class="d-flex align-items-center gap-1 hover-text-primary">
+              <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
+              Dashboard
+            </a>
+          </li>
+          <li>-</li>
+          <li class="fw-medium">eCommerce</li>
+        </ul>
+      </div>
+
+      <div class="row gy-4">
+        <div class="col-xxl-12">
+          <div class="row gy-4">
+
+            <div class="col-xxl-3 col-sm-6">
+              <div class="card p-3 shadow-2 radius-8 border input-form-light h-100 bg-gradient-end-1">
+                <div class="card-body p-0">
+                  <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
+
+                    <div class="d-flex align-items-center gap-2">
+                      <span
+                        class="mb-0 w-48-px h-48-px bg-primary-600 flex-shrink-0 text-white d-flex justify-content-center align-items-center rounded-circle h6 mb-0">
+                        <iconify-icon icon="mdi:medicine" class="menu-icon"></iconify-icon>
+                      </span>
+                      <div>
+                        <span class="mb-2 fw-medium text-secondary-light text-sm">Total Types of Medicine</span>
+                        <h6 id="medicine-count" class="fw-semibold">Loading...</h6>
+                    </div>
+                    
+          
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xxl-3 col-sm-6">
+              <div class="card p-3 shadow-2 radius-8 border input-form-light h-100 bg-gradient-end-2">
+                <div class="card-body p-0">
+                  <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
+
+                    <div class="d-flex align-items-center gap-2">
+                      <span
+                        class="mb-0 w-48-px h-48-px bg-success-main flex-shrink-0 text-white d-flex justify-content-center align-items-center rounded-circle h6">
+                        <iconify-icon icon="mdi:package-variant" class="menu-icon"></iconify-icon>
+                      </span>
+                      <div>
+                        <span class="mb-2 fw-medium text-secondary-light text-sm">Total Medicine Pack</span>
+                        <h6 id="medicine-pack-count" class="fw-semibold">Loading...</h6>
+                    </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-xxl-3 col-sm-6">
+              <div class="card p-3 shadow-2 radius-8 border input-form-light h-100 bg-gradient-end-3">
+                <div class="card-body p-0">
+                  <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
+
+                    <div class="d-flex align-items-center gap-2">
+                      <span
+                        class="mb-0 w-48-px h-48-px bg-yellow text-white flex-shrink-0 d-flex justify-content-center align-items-center rounded-circle h6">
+                        <iconify-icon icon="mdi:cart" class="menu-icon"></iconify-icon>
+
+                      </span>
+                      <div>
+                        <span class="mb-2 fw-medium text-secondary-light text-sm">Total Billings</span>
+                        <h6 class="fw-semibold" id="total-billings">Loading...</h6>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-3 col-sm-6">
+              <div class="card p-3 shadow-2 radius-8 border input-form-light h-100 bg-gradient-end-6">
+                <div class="card-body p-0">
+                  <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
+
+                    <div class="d-flex align-items-center gap-2">
+                      <span
+                        class="mb-0 w-48-px h-48-px bg-cyan text-white flex-shrink-0 d-flex justify-content-center align-items-center rounded-circle h6">
+                        <iconify-icon icon="streamline:bag-dollar-solid" class="icon"></iconify-icon>
+                      </span>
+                      <div>
+                        <span class="mb-2 fw-medium text-secondary-light text-sm">Total Purchase Amount</span>
+                        <h6 class="fw-semibold" id="total-purchase">Loading...</h6>
+                    </div>
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-3 col-sm-6">
+              <div class="card p-3 shadow-2 radius-8 border input-form-light h-100 bg-gradient-end-2">
+                <div class="card-body p-0">
+                  <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
+
+                    <div class="d-flex align-items-center gap-2">
+                      <span
+                        class="mb-0 w-48-px h-48-px bg-success-main flex-shrink-0 text-white d-flex justify-content-center align-items-center rounded-circle h6">
+                        <iconify-icon icon="mdi:chart-bar" class="menu-icon"></iconify-icon>
+
+                      </span>
+                      <div>
+                        <span class="mb-2 fw-medium text-secondary-light text-sm">Total Sale Amount</span>
+                        <h6 class="fw-semibold" id="total-sale">Loading...</h6>
+                    </div>
+                    
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-3 col-sm-6">
+              <div class="card p-3 shadow-2 radius-8 border input-form-light h-100 bg-gradient-end-6">
+                <div class="card-body p-0">
+                  <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
+
+                    <div class="d-flex align-items-center gap-2">
+                      <span
+                        class="mb-0 w-48-px h-48-px bg-cyan text-white flex-shrink-0 d-flex justify-content-center align-items-center rounded-circle h6">
+                        <iconify-icon icon="mdi:cash" class="menu-icon"></iconify-icon>
+
+                      </span>
+                      <div>
+                        <span class="mb-2 fw-medium text-secondary-light text-sm">Current Product Value</span>
+                        <h6 class="fw-semibold" id="current-product-value">Loading...</h6>
+                    </div>
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xxl-3 col-sm-6">
+              <div class="card p-3 shadow-2 radius-8 border input-form-light h-100 bg-gradient-end-4">
+                <div class="card-body p-0">
+                  <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
+
+                    <div class="d-flex align-items-center gap-2">
+                      <span
+                        class="mb-0 w-48-px h-48-px bg-primary-600 flex-shrink-0 text-white d-flex justify-content-center align-items-center rounded-circle h6 mb-0">
+                        <iconify-icon icon="mdi:account-tie" class="menu-icon"></iconify-icon>
+
+                      </span>
+                      <div>
+                        <span class="mb-2 fw-medium text-secondary-light text-sm">Total Employees</span>
+                        <h6 class="fw-semibold" id="total-employees">Loading...</h6>
+                    </div>
+                    
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xxl-3 col-sm-6">
+              <div class="card p-3 shadow-2 radius-8 border input-form-light h-100 bg-gradient-end-5">
+                <div class="card-body p-0">
+                  <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
+
+                    <div class="d-flex align-items-center gap-2">
+                      <span
+                        class="mb-0 w-48-px h-48-px bg-pink text-white flex-shrink-0 d-flex justify-content-center align-items-center rounded-circle h6">
+                        <iconify-icon icon="mingcute:user-follow-fill" class="icon"></iconify-icon>
+                      </span>
+                      <div>
+                        <span class="mb-2 fw-medium text-secondary-light text-sm">Total Customers</span>
+                        <h6 class="fw-semibold" id="total-customers">Loading...</h6>
+                    </div>
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+
+        <div class="col-xxl-12 col-md-6">
+          <div class="card h-100">
+            <div class="card-header">
+              <div class="d-flex align-items-center flex-wrap gap-2 justify-content-between">
+                <h6 class="mb-2 fw-bold text-lg mb-0">Medicine List</h6>
+                <a href="medicine.html" class="text-primary-600 hover-text-primary d-flex align-items-center gap-1">
+                  View All
+                  <iconify-icon icon="solar:alt-arrow-right-linear" class="icon"></iconify-icon>
+                </a>
+              </div>
+            </div>
+            <div class="card-body p-24">
+              <div class="table-responsive scroll-sm">
+                <table class="table bordered-table mb-0">
+                  <thead>
+                    <tr>
+                      <th>Medicine Name</th>
+                      <th>Pack Size</th>
+                      <th>Unit Price</th>
+                      <th>Total Pack Case</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="medicine-body">
+                    <tr>
+                      <td>ALKATON 250 ml</td>
+                      <td>250 ml</td>
+                      <td>$120</td>
+                      <td>140</td>
+                      <td> <span
+                          class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Available</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>KALI COUGH 100 ml</td>
+                      <td>110 ml</td>
+                      <td>$80</td>
+                      <td>0</td>
+                      <td> <span class="bg-danger-focus text-danger-main px-24 py-4 rounded-pill fw-medium text-sm">Out
+                          of Stock</span> </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xxl-7 col-md-6">
+          <div class="card h-100">
+            <div class="card-header">
+              <div class="d-flex align-items-center flex-wrap gap-2 justify-content-between">
+                <h6 class="mb-2 fw-bold text-lg mb-0">Latest 5 Medicine Stock</h6>
+                <a href="medicine-stock.html"
+                  class="text-primary-600 hover-text-primary d-flex align-items-center gap-1">
+                  View All
+                  <iconify-icon icon="solar:alt-arrow-right-linear" class="icon"></iconify-icon>
+                </a>
+              </div>
+            </div>
+            <div class="card-body p-24">
+              <div class="table-responsive scroll-sm">
+                <table id="stock_medicine" class="table bordered-table mb-0">
+                  <thead>
+                    <tr>
+                      <th>Medicine Name</th>
+                      <th>Total Pack Case</th>
+                      <th>Purchase Price</th>
+                      <th>Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody id="stock-table-body">
+                    <!-- <tr>
+                      <td>ALKATON 250 ml</td>
+                      <td>30</td>
+                      <td>$100</td>
+                      <td>$3000</td>
+                    </tr> -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xxl-5 col-md-6">
+          <div class="card h-100">
+            <div class="card-header">
+              <div class="d-flex align-items-center flex-wrap gap-2 justify-content-between">
+                <h6 class="mb-2 fw-bold text-lg mb-0">Latest 5 Order</h6>
+                <a href="order.html" class="text-primary-600 hover-text-primary d-flex align-items-center gap-1">
+                  View All
+                  <iconify-icon icon="solar:alt-arrow-right-linear" class="icon"></iconify-icon>
+                </a>
+              </div>
+            </div>
+            <div class="card-body p-24">
+              <div class="table-responsive scroll-sm">
+                <table class="table bordered-table mb-0">
+                  <thead>
+                    <tr>
+                      <th>Order No</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="order-table-body">
+                    <!-- <tr>
+                      <td>ORD-3211</td>
+                      <td>$320</td>
+                      <td> <span
+                          class="bg-warning-focus text-warning-main px-24 py-4 rounded-pill fw-medium text-sm">Pending</span>
+                      </td>
+                    </tr> -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <footer class="d-footer">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-auto">
+          <p class="mb-0">© 2024 Ethical Den. All Rights Reserved.</p>
+        </div>
+        <div class="col-auto">
+          <p class="mb-0">Made by <span class="text-primary-600">Ethical Den</span></p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- jQuery library js -->
+  <script src="assets/js/lib/jquery-3.7.1.min.js"></script>
+  <!-- Bootstrap js -->
+  <script src="assets/js/lib/bootstrap.bundle.min.js"></script>
+  <!-- Apex Chart js -->
+  <script src="assets/js/lib/apexcharts.min.js"></script>
+  <!-- Data Table js -->
+  <script src="assets/js/lib/dataTables.min.js"></script>
+  <!-- Iconify Font js -->
+  <script src="assets/js/lib/iconify-icon.min.js"></script>
+  <!-- jQuery UI js -->
+  <script src="assets/js/lib/jquery-ui.min.js"></script>
+  <!-- Vector Map js -->
+  <script src="assets/js/lib/jquery-jvectormap-2.0.5.min.js"></script>
+  <script src="assets/js/lib/jquery-jvectormap-world-mill-en.js"></script>
+  <!-- Popup js -->
+  <script src="assets/js/lib/magnifc-popup.min.js"></script>
+  <!-- Slick Slider js -->
+  <script src="assets/js/lib/slick.min.js"></script>
+  <!-- prism js -->
+  <script src="assets/js/lib/prism.js"></script>
+  <!-- file upload js -->
+  <script src="assets/js/lib/file-upload.js"></script>
+  <!-- audioplayer -->
+  <script src="assets/js/lib/audioplayer.js"></script>
+
+  <!-- main js -->
+  <script src="assets/js/app.js"></script>
+
+  <script src="assets/js/homeThreeChart.js"></script>
+
+<script src="./js/index.js"></script>
+<script src="./js/logout.js"></script>
+<script src="./js/home.js"></script>
+</body>
+
+</html>
