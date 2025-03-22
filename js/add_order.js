@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
   
 
-    const customerResponse = await fetch('http://127.0.0.1:8000/api/management/customers/', {
+    const customerResponse = await fetch('https://medicine-management-backend.vercel.app/api/management/customers/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -40,10 +40,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const customer = await customerResponse.json();
 
    let amount =0;
-  fetch(`http://127.0.0.1:8000/api/management/medicines/?name=${medicine_name}`)
+  fetch(`https://medicine-management-backend.vercel.app/api/management/medicines/?name=${medicine_name}`)
   .then(response => response.json())
     .then(data => {
-        console.log(data);
+        // console.log(data);
         amount= parseInt(data.unit_price)*totalPack;
         
     })
@@ -61,9 +61,9 @@ document.addEventListener('DOMContentLoaded', function() {
       order_amount: amount,
     };
   
-    console.log(orderData);
+    // console.log(orderData);
 
-    const orderResponse = await fetch('http://127.0.0.1:8000/api/management/orders/', {
+    const orderResponse = await fetch('https://medicine-management-backend.vercel.app/api/management/orders/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (orderResponse.ok) {
       alert('Order placed successfully!');
 
-    //   document.getElementById('orderForm').reset();
+      document.getElementById('orderForm').reset();
     } else {
       alert('Error placing order!');
     }

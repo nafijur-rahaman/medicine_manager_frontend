@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const token = localStorage.getItem("token");
   
     if (token) {
-      fetch(`http://127.0.0.1:8000/api/users/list/${id}/`, {
+      fetch(`https://medicine-management-backend.vercel.app/api/users/list/${id}/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -85,22 +85,33 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.json())
       .then((data) => {
 
-        console.log(data);
+        // console.log(data);
  
         document.getElementById("user-role").textContent = data.role;
         document.getElementById("user-name").textContent = data.username;
 
       })
       .catch((error) => {
-        console.error("Error fetching user details:", error);
+
         document.getElementById("user-name").textContent = "Error loading name";
         document.getElementById("user-role").textContent = "Error loading role";
       });
     } else {
-      console.error("No authentication token found.");
+
       document.getElementById("user-name").textContent = "Guest";
       document.getElementById("user-role").textContent = "N/A";
     }
   });
   
 
+  
+  const id = localStorage.getItem('user_id');
+  fetch(`https://medicine-management-backend.vercel.app/api/users/list/${id}`)
+      .then(response => response.json())
+      .then(data => {
+      // Corrected this line to use 'data' instead of 'user'
+          const userImage = document.getElementById('user-image');
+          userImage.src = `https://res.cloudinary.com/dwsp8rft8/${data.image}`;
+          
+      })
+  

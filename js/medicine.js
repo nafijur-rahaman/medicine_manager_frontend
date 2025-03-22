@@ -1,6 +1,6 @@
 
 function fetchMedicines() {
-    fetch('http://127.0.0.1:8000/api/management/medicines/')
+    fetch('https://medicine-management-backend.vercel.app/api/management/medicines/')
         .then(response => response.json())
         .then(data => {
             const medicineList = document.getElementById('medicine-list');
@@ -10,7 +10,7 @@ function fetchMedicines() {
             const userRole = localStorage.getItem('role');
             
             data.forEach(medicine => {
-                console.log(medicine);
+                // console.log(medicine);
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td>${medicine.id}</td>
@@ -35,17 +35,15 @@ function fetchMedicines() {
                 medicineList.appendChild(tr);
             });
         })
-        .catch(error => {
-            console.error('Error fetching medicines:', error);
-        });
+  
 }
 
 
     function editMedicine(id) {
-        fetch(`http://127.0.0.1:8000/api/management/medicines/${id}/`)
+        fetch(`https://medicine-management-backend.vercel.app/api/management/medicines/${id}/`)
             .then(response => response.json())
             .then(medicine => {
-                console.log(medicine);
+                // console.log(medicine);
                 document.querySelector('#addMedicineModal #medicine_name').value = medicine.name;
                 document.querySelector('#addMedicineModal #brand_name').value = medicine.brand_name;
                 document.querySelector('#addMedicineModal #medicine_category').value = medicine.category_name;
@@ -79,14 +77,12 @@ function fetchMedicines() {
                 // Show the modal
                 $('#addMedicineModal').modal('show');
             })
-            .catch(error => {
-                console.error('Error fetching medicine:', error);
-            });
+      
     }
 
 
     function updateMedicine(id, updatedMedicine) {
-        fetch(`http://127.0.0.1:8000/api/management/medicines/${id}/`, {
+        fetch(`https://medicine-management-backend.vercel.app/api/management/medicines/${id}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -103,16 +99,14 @@ function fetchMedicines() {
             console.log('Medicine updated successfully:', updated);
             
         })
-        .catch(error => {
-            console.error('Error updating medicine:', error);
-        });
+ 
     }
     
     
 
     function deleteMedicine(id) {
         if (confirm('Are you sure you want to delete this medicine?')) {
-            fetch(`http://127.0.0.1:8000/api/management/medicines/${id}/`, {
+            fetch(`https://medicine-management-backend.vercel.app/api/management/medicines/${id}/`, {
                 method: 'DELETE',
             })
             .then(response => {
@@ -123,9 +117,7 @@ function fetchMedicines() {
                     alert('Failed to delete medicine.');
                 }
             })
-            .catch(error => {
-                console.error('Error deleting medicine:', error);
-            });
+         
         }
     }
 

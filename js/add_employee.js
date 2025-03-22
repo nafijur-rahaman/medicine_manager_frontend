@@ -23,10 +23,10 @@ document.getElementById('add-employee-form').addEventListener('submit', function
         phone: phone,
         address: address,
     };
-    console.log(data);
+    // console.log(data);
 
  
-    fetch('http://127.0.0.1:8000/api/users/register/', {
+    fetch('https://medicine-management-backend.vercel.app/api/users/register/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ document.getElementById('add-employee-form').addEventListener('submit', function
         if (data.success) {
             alert("Employee Add successfully");
 
-            window.location.href = "/employee.html";
+            window.location.href = "../add-employee.html";
 
 
 

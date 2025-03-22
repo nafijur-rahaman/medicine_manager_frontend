@@ -9,9 +9,9 @@ document.getElementById("login-form").addEventListener("submit", function(event)
         password: document.getElementById("password").value,
     };
 
-    console.log(formData);
+    // console.log(formData);
 
-    fetch("http://127.0.0.1:8000/api/users/login/", {
+    fetch("https://medicine-management-backend.vercel.app/api/users/login/", {
         method: "POST",
 
         headers: {

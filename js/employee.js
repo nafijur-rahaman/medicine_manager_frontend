@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Fetch user data
     function fetchUsers() {
-        fetch("http://127.0.0.1:8000/api/users/list/")
+        fetch("https://medicine-management-backend.vercel.app/api/users/list/")
             .then(response => response.json())
             .then(data => {
                 tableBody.innerHTML = "";
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             })
             .catch(error => {
-                console.error("Error fetching user data:", error);
+                // console.error("Error fetching user data:", error);
                 tableBody.innerHTML = `<tr><td colspan="7" class="text-center text-danger">Failed to load data</td></tr>`;
             });
     }
@@ -57,10 +57,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
    
     function editUser(userId) {
-        fetch(`http://127.0.0.1:8000/api/users/list/${userId}/`)
+        fetch(`https://medicine-management-backend.vercel.app/api/users/list/${userId}/`)
             .then(response => response.json())
             .then(user => {
-                console.log(user);
+                // console.log(user);
                 currentEditingUserId = userId;
                 document.getElementById("username").value = user.username || "";
                 document.getElementById("email").value = user.email || "";
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("address").value = user.address || "";
                 document.getElementById("role").value = user.role || "admin";
             })
-            .catch(error => console.error("Error fetching user details:", error));
+            
     }
 
 
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
             role: document.getElementById("role").value
         };
 
-        fetch(`http://127.0.0.1:8000/api/users/list/${currentEditingUserId}/`, {
+        fetch(`https://medicine-management-backend.vercel.app/api/users/list/${currentEditingUserId}/`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -96,19 +96,19 @@ document.addEventListener("DOMContentLoaded", function () {
             fetchUsers(); 
             document.querySelector(".btn-close").click(); 
         })
-        .catch(error => console.error("Error updating user:", error));
+  
     });
 
     // Function to handle Delete
     function deleteUser(userId) {
         if (confirm("Are you sure you want to delete this user?")) {
-            fetch(`http://127.0.0.1:8000/api/users/${userId}/delete/`, {
+            fetch(`https://medicine-management-backend.vercel.app/api/users/${userId}/delete/`, {
                 method: "DELETE"
             })
             .then(() => {
                 fetchUsers(); // Refresh list
             })
-            .catch(error => console.error("Error deleting user:", error));
+          
         }
     }
 

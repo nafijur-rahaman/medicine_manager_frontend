@@ -1,6 +1,6 @@
 async function fetchOrders() {
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/management/orders/');
+      const response = await fetch('https://medicine-management-backend.vercel.app/api/management/orders/');
       const orders = await response.json();
 
       const orderTableBody = document.getElementById('orderTableBody');
@@ -32,11 +32,11 @@ async function fetchOrders() {
 
   async function editOrder(orderId) {
 
-        console.log(orderId);
-        const response = await fetch(`http://127.0.0.1:8000/api/management/orders/${orderId}/`);
+        // console.log(orderId);
+        const response = await fetch(`https://medicine-management-backend.vercel.app/api/management/orders/${orderId}/`);
         const order = await response.json();
 
-        console.log(order);
+        // console.log(order);
         document.getElementById('medicineName').value = order.medicine_name;
         document.getElementById('customerName').value = order.customer_name;
         document.getElementById('totalAmount').value = order.order_amount;
@@ -63,7 +63,7 @@ async function fetchOrders() {
     order_amount: document.getElementById('totalAmount').value,
     };
   
-    const response = await fetch(`http://127.0.0.1:8000/api/management/orders/${orderId}/`, {
+    const response = await fetch(`https://medicine-management-backend.vercel.app/api/management/orders/${orderId}/`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(orderData),
@@ -85,7 +85,7 @@ async function fetchOrders() {
     const confirmation = confirm('Are you sure you want to delete this order?');
     if (confirmation) {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/api/management/orders/${orderId}/`, {
+        const response = await fetch(`https://medicine-management-backend.vercel.app/api/management/orders/${orderId}/`, {
           method: 'DELETE',
         });
 

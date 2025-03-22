@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const apiURL = "http://127.0.0.1:8000/api/management/customers/";
+    const apiURL = "https://medicine-management-backend.vercel.app/api/management/customers/";
     const tableBody = document.getElementById("customer-list");
 
     fetch(apiURL)
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             data.forEach((customer, index) => {
                 const row = document.createElement("tr");
-                console.log(customer);
+                // console.log(customer);
                 row.innerHTML = `
                     <td>${index + 1}</td>
                     <td>${customer.name}</td>
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             const customerModal = new bootstrap.Modal(document.getElementById('customerModal'));
                             customerModal.show();
                         })
-                        .catch(error => console.error("Error fetching customer data:", error));
+                        
                 });
             });
 
@@ -58,11 +58,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             });
         })
-        .catch(error => console.error("Error fetching data:", error));
+     
 });
 
 function deleteCustomer(customerId) {
-    fetch(`http://127.0.0.1:8000/api/management/customers/${customerId}/`, {
+    fetch(`https://medicine-management-backend.vercel.app/api/management/customers/${customerId}/`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
     })
@@ -74,7 +74,7 @@ function deleteCustomer(customerId) {
                 alert("Failed to delete customer.");
             }
         })
-        .catch(error => console.error("Error deleting customer:", error));
+        
 }
 
 
@@ -90,7 +90,7 @@ document.getElementById("customerform").addEventListener("submit", function (eve
         address: document.getElementById("address").value,
     };
 
-    fetch(`http://127.0.0.1:8000/api/management/customers/${customerId}/`, {
+    fetch(`https://medicine-management-backend.vercel.app/api/management/customers/${customerId}/`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -105,5 +105,5 @@ document.getElementById("customerform").addEventListener("submit", function (eve
                 alert("Failed to update customer details.");
             }
         })
-        .catch(error => console.error("Error updating customer:", error));
+        
 });

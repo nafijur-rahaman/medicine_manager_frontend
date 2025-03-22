@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
       
-        fetch('http://127.0.0.1:8000/api/management/categories/', {
+        fetch('https://medicine-management-backend.vercel.app/api/management/categories/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -24,9 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Category added successfully!');
             location.reload(); 
         })
-        .catch(error => {
-            console.error('Error adding category:', error);
-            alert('Failed to add category. Please try again.');
-        });
+      
     });
 });

@@ -1,9 +1,25 @@
+
+   const token = localStorage.getItem('token');
+                
+
+   if (token) {
+    document.getElementById('logout-item').style.display = 'block';
+    document.getElementById('login-item').style.display = 'none';
+    document.getElementById('signup-item').style.display = 'none';
+  } else {
+    document.getElementById('logout-item').style.display = 'none';
+    document.getElementById('login-item').style.display = 'block';
+    document.getElementById('signup-item').style.display = 'block';
+  }
+ 
+
+
 function logout() {
-    console.log("Logout function called");
+ 
     const token = localStorage.getItem('token');
   
     if (token) {
-      fetch("http://127.0.0.1:8000/api/users/logout/", {
+      fetch("https://medicine-management-backend.vercel.app/api/users/logout/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

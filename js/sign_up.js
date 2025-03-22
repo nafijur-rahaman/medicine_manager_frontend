@@ -16,10 +16,10 @@ document.getElementById('signup-form').addEventListener('submit', function(e) {
         password: password,
         password2: password,
     };
-    console.log(data);
+    // console.log(data);
 
  
-    fetch('http://127.0.0.1:8000/api/users/register/', {
+    fetch('https://medicine-management-backend.vercel.app/api/users/register/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

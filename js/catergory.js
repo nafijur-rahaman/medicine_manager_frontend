@@ -3,10 +3,10 @@
         const tableBody = document.getElementById("categoryTable")
         tableBody.innerHTML = '';
 
-        fetch('http://127.0.0.1:8000/api/management/categories/')
+        fetch('https://medicine-management-backend.vercel.app/api/management/categories/')
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 data.forEach((category, index) => {
           
                     const row = document.createElement('tr');
@@ -22,7 +22,7 @@
                     tableBody.appendChild(row);
                 });
             })
-            .catch(error => console.error('Error fetching categories:', error));
+            
     });
 
 
@@ -44,7 +44,7 @@
 
 
     function updateCategory(categoryId, categoryName) {
-        fetch(`http://127.0.0.1:8000/api/management/categories/${categoryId}/`, {
+        fetch(`https://medicine-management-backend.vercel.app/api/management/categories/${categoryId}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -56,13 +56,13 @@
                 alert('Category updated successfully!');
                 location.reload(); // Reload the page to fetch the updated list
             })
-            .catch(error => console.error('Error updating category:', error));
+            
     }
 
 
     function deleteCategory(categoryId) {
         if (confirm('Are you sure you want to delete this category?')) {
-            fetch(`http://127.0.0.1:8000/api/management/categories/${categoryId}/`, {
+            fetch(`https://medicine-management-backend.vercel.app/api/management/categories/${categoryId}/`, {
                 method: 'DELETE',
             })
                 .then(response => {
@@ -71,7 +71,7 @@
                         location.reload();
                     }
                 })
-                .catch(error => console.error('Error deleting category:', error));
+               
         }
     }
 

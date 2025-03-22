@@ -10,7 +10,7 @@ document.getElementById('medicine-form').addEventListener('submit', function(eve
       total_pack: document.getElementById('total_pack').value
     };
 
-    fetch('http://127.0.0.1:8000/api/management/medicines/', {
+    fetch('https://medicine-management-backend.vercel.app/api/management/medicines/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -21,13 +21,10 @@ document.getElementById('medicine-form').addEventListener('submit', function(eve
       .then(data => {
 
         alert('Medicine added successfully!');
-        console.log(data);
+        // window.location.href = '../add-medicine.html';
 
-        // document.getElementById('medicine-form').reset();
+
+        document.getElementById('medicine-form').reset();
       })
-      .catch(error => {
-
-        alert('Error adding medicine!');
-        console.error(error);
-      });
+  
   });

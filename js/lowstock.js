@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     const lowStocksTable = document.getElementById("lowStocks");
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/management/medicines/");
+        const response = await fetch("https://medicine-management-backend.vercel.app/api/management/medicines/");
         const medicines = await response.json();
 
         if (Array.isArray(medicines)) {

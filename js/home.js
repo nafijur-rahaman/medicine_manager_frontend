@@ -1,7 +1,7 @@
 // medcine list
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("http://127.0.0.1:8000/api/management/medicines/")
+  fetch("https://medicine-management-backend.vercel.app/api/management/medicines/")
     .then((response) => response.json())
     .then((data) => {
       const tableBody = document.getElementById("medicine-body");
@@ -27,12 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
         tableBody.appendChild(row);
       });
     })
-    .catch((error) => console.error("Error fetching data:", error));
+   
 });
 
 //medicine stocks
 
-fetch("http://127.0.0.1:8000/api/management/stocks/")
+fetch("https://medicine-management-backend.vercel.app/api/management/stocks/")
   .then((response) => response.json())
   .then((data) => {
     const tableBody = document.getElementById("stock-table-body");
@@ -57,7 +57,7 @@ fetch("http://127.0.0.1:8000/api/management/stocks/")
 
 // dynamic order
 
-fetch("http://127.0.0.1:8000/api/management/orders/")
+fetch("https://medicine-management-backend.vercel.app/api/management/orders/")
   .then((response) => response.json())
   .then((data) => {
     const tableBody = document.getElementById("order-table-body");
@@ -67,7 +67,7 @@ fetch("http://127.0.0.1:8000/api/management/orders/")
       tableBody.appendChild(noDataRow);
     } else {
       data.forEach((order) => {
-        console.log(order);
+        // console.log(order);
         const row = document.createElement("tr");
 
         statusClass = "bg-success-focus text-success-main";
@@ -84,17 +84,17 @@ fetch("http://127.0.0.1:8000/api/management/orders/")
 
 // dashboard
 
-fetch("http://127.0.0.1:8000/api/management/medicines/")
+fetch("https://medicine-management-backend.vercel.app/api/management/medicines/")
   .then((response) => response.json())
   .then((data) => {
     document.getElementById("medicine-count").textContent = data.length;
   })
   .catch((error) => {
-    console.error("Error fetching medicine data:", error);
+ 
     document.getElementById("medicine-count").textContent = "Error";
   });
 
-fetch("http://127.0.0.1:8000/api/management/stocks/")
+fetch("https://medicine-management-backend.vercel.app/api/management/stocks/")
   .then((response) => response.json())
   .then((data) => {
     let amount = 0;
@@ -103,13 +103,10 @@ fetch("http://127.0.0.1:8000/api/management/stocks/")
     });
     document.getElementById("medicine-pack-count").textContent = amount;
   })
-  .catch((error) => {
-    console.error("Error fetching stock data:", error);
-    document.getElementById("medicine-pack-count").textContent = "Error";
-  });
 
 
-  fetch("http://127.0.0.1:8000/api/management/orders/")
+
+  fetch("https://medicine-management-backend.vercel.app/api/management/orders/")
     .then(response => response.json())
     .then(data => {
         let totalBilling = 0;
@@ -120,13 +117,9 @@ fetch("http://127.0.0.1:8000/api/management/stocks/")
         }
         document.getElementById("total-billings").textContent = totalBilling; 
     })
-    .catch(error => {
-        console.error("Error fetching billing data:", error);
-        document.getElementById("total-billings").textContent = "Error";
-    });
 
 
-    fetch("http://127.0.0.1:8000/api/management/stocks/")
+    fetch("https://medicine-management-backend.vercel.app/api/management/stocks/")
     .then(response => response.json())
     .then(data => {
         let totalPurchase = 0;
@@ -137,14 +130,11 @@ fetch("http://127.0.0.1:8000/api/management/stocks/")
         }
         document.getElementById("total-purchase").textContent = `₹ ${totalPurchase.toFixed(2)}`; // Display total with currency
     })
-    .catch(error => {
-        console.error("Error fetching purchase data:", error);
-        document.getElementById("total-purchase").textContent = "Error";
-    });
 
 
 
-    fetch("http://127.0.0.1:8000/api/management/orders/")
+
+    fetch("https://medicine-management-backend.vercel.app/api/management/orders/")
     .then(response => response.json())
     .then(data => {
         let totalSale = 0;
@@ -155,14 +145,10 @@ fetch("http://127.0.0.1:8000/api/management/stocks/")
         }
         document.getElementById("total-sale").textContent = `₹ ${totalSale.toFixed(2)}`; // Display total sale amount
     })
-    .catch(error => {
-        console.error("Error fetching sale data:", error);
-        document.getElementById("total-sale").textContent = "Error";
-    });
 
 
 
-    fetch("http://127.0.0.1:8000/api/management/medicines/")
+    fetch("https://medicine-management-backend.vercel.app/api/management/medicines/")
     .then(response => response.json())
     .then(data => {
         let totalProductValue = 0;
@@ -175,15 +161,11 @@ fetch("http://127.0.0.1:8000/api/management/stocks/")
         }
         document.getElementById("current-product-value").textContent = `₹ ${totalProductValue.toFixed(2)}`; // Display value
     })
-    .catch(error => {
-        console.error("Error fetching product value:", error);
-        document.getElementById("current-product-value").textContent = "Error";
-    });
 
 
   
 
-    fetch("http://127.0.0.1:8000/api/users/list")
+    fetch("https://medicine-management-backend.vercel.app/api/users/list")
     .then(response => response.json())
     .then(data => {
         let totalEmployees = 0;
@@ -192,14 +174,11 @@ fetch("http://127.0.0.1:8000/api/management/stocks/")
         }
         document.getElementById("total-employees").textContent = totalEmployees;
     })
-    .catch(error => {
-        console.error("Error fetching employee data:", error);
-        document.getElementById("total-employees").textContent = "Error";
-    });
 
 
 
-    fetch("http://127.0.0.1:8000/api/management/customers/")
+
+    fetch("https://medicine-management-backend.vercel.app/api/management/customers/")
     .then(response => response.json())
     .then(data => {
         let totalCustomers = 0;
@@ -208,7 +187,8 @@ fetch("http://127.0.0.1:8000/api/management/stocks/")
         }
         document.getElementById("total-customers").textContent = totalCustomers; 
     })
-    .catch(error => {
-        console.error("Error fetching customer data:", error);
-        document.getElementById("total-customers").textContent = "Error";
-    });
+
+
+
+
+  

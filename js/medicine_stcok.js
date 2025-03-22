@@ -1,6 +1,6 @@
     // Function to fetch medicines and stock data from the API and populate the table
     function fetchMedicinesAndStocks() {
-        fetch('http://127.0.0.1:8000/api/management/stocks/')
+        fetch('https://medicine-management-backend.vercel.app/api/management/stocks/')
             .then(response => response.json())
             .then(data => {
                 const stockList = document.getElementById('stock_list');
@@ -21,14 +21,12 @@
                     stockList.appendChild(tr);
                 });
             })
-            .catch(error => {
-                console.error('Error fetching stock data:', error);
-            });
+         
     }
 
     function editStock(id) {
   
-        fetch(`http://127.0.0.1:8000/api/management/stocks/${id}/`)
+        fetch(`https://medicine-management-backend.vercel.app/api/management/stocks/${id}/`)
             .then(response => response.json())
             .then(stock => {
 
@@ -46,9 +44,7 @@
 
                 $('#addStockModal').modal('show');  
             })
-            .catch(error => {
-                console.error('Error fetching stock:', error);
-            });
+        
     }
 
     function updateStock(id) {
@@ -61,7 +57,7 @@
             purchase_price: formData.get('purchase_price')
         };
 
-        fetch(`http://127.0.0.1:8000/api/management/stocks/${id}/`, {
+        fetch(`https://medicine-management-backend.vercel.app/api/management/stocks/${id}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -75,15 +71,13 @@
             $('#addStockModal').modal('hide'); 
             fetchMedicinesAndStocks();
         })
-        .catch(error => {
-            console.error('Error updating stock:', error);
-        });
+       
     }
 
     // Function to delete stock
     function deleteStock(id) {
         if (confirm('Are you sure you want to delete this stock?')) {
-            fetch(`http://127.0.0.1:8000/api/management/stocks/${id}/`, {
+            fetch(`https://medicine-management-backend.vercel.app/api/management/stocks/${id}/`, {
                 method: 'DELETE',
             })
             .then(response => {
@@ -94,9 +88,7 @@
                     alert('Failed to delete stock.');
                 }
             })
-            .catch(error => {
-                console.error('Error deleting stock:', error);
-            });
+         
         }
     }
 
